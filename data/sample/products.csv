@@ -1,0 +1,6 @@
+product_id,product_name,category,price,available_stock
+P001,Wireless Mouse,Electronics,25.99,150
+P002,Mechanical Keyboard,Electronics,79.50,80
+P003,Coffee Mug,Home,9.99,500
+P004,Notebook A5,Stationery,3.50,1000
+P005,USB-C Cable,Electronics,7.99,300

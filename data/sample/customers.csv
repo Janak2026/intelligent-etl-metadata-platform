@@ -1,0 +1,6 @@
+customer_id,first_name,last_name,email,signup_date,loyalty_tier
+C001,Amit,Sharma,amit.sharma@example.com,2024-06-12,Bronze
+C002,Sowmya,Patel,sowmya.patel@example.com,2023-12-03,Silver
+C003,Rahul,Verma,rahul.verma@example.com,2024-01-25,Gold
+C004,Leena,George,leena.george@example.com,2025-02-14,Silver
+C005,Naveen,Kumar,naveen.k@example.com,2024-11-09,Bronze

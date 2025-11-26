@@ -8,13 +8,84 @@
       "amount": "double"
     },
     "quality_rules": {
-      "not_null": ["order_id", "customer_id"],
+      "not_null": ["order_id", "customer_id", "order_date"],
       "positive_values": ["amount"],
       "accepted_values": {
         "status": ["pending", "shipped", "delivered", "cancelled"]
       }
     },
     "freshness_hours": 24,
-    "owner": "data-eng-team"
+    "owner": "data-eng-team",
+    "description": "All customer orders including status and amount."
+  },
+  "customers": {
+    "schema": {
+      "customer_id": "string",
+      "first_name": "string",
+      "last_name": "string",
+      "email": "string",
+      "signup_date": "date",
+      "loyalty_tier": "string"
+    },
+    "quality_rules": {
+      "not_null": ["customer_id", "email"],
+      "accepted_values": {
+        "loyalty_tier": ["Bronze", "Silver", "Gold"]
+      }
+    },
+    "freshness_hours": 168,
+    "owner": "data-platform",
+    "description": "Registered customers and loyalty tier."
+  },
+  "products": {
+    "schema": {
+      "product_id": "string",
+      "product_name": "string",
+      "category": "string",
+      "price": "double",
+      "available_stock": "int"
+    },
+    "quality_rules": {
+      "not_null": ["product_id", "product_name"],
+      "positive_values": ["price", "available_stock"]
+    },
+    "freshness_hours": 72,
+    "owner": "catalog-team",
+    "description": "Product catalog with prices and stock."
+  },
+  "payments": {
+    "schema": {
+      "payment_id": "string",
+      "order_id": "string",
+      "payment_date": "timestamp",
+      "payment_method": "string",
+      "amount": "double",
+      "status": "string"
+    },
+    "quality_rules": {
+      "not_null": ["payment_id", "order_id"],
+      "accepted_values": {
+        "status": ["confirmed", "pending", "refunded"]
+      },
+      "positive_values": ["amount"]
+    },
+    "freshness_hours": 24,
+    "owner": "payments-team",
+    "description": "Payments linked to orders and their statuses."
+  },
+  "inventory": {
+    "schema": {
+      "product_id": "string",
+      "warehouse_id": "string",
+      "stock_date": "date",
+      "quantity": "int"
+    },
+    "quality_rules": {
+      "not_null": ["product_id", "warehouse_id", "stock_date"],
+      "positive_values": ["quantity"]
+    },
+    "freshness_hours": 24,
+    "owner": "logistics-team",
+    "description": "Inventory quantities by warehouse and date."
   }
 }

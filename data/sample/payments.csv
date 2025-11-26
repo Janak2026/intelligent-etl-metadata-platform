@@ -1,0 +1,11 @@
+payment_id,order_id,payment_date,payment_method,amount,status
+PMT1001,O1001,2025-11-01 09:15:00,card,199.95,confirmed
+PMT1002,O1002,2025-11-02 14:10:00,upi,49.50,confirmed
+PMT1003,O1003,2025-11-03 16:30:00,card,0.00,refunded
+PMT1004,O1004,2025-11-04 11:05:00,netbanking,349.00,confirmed
+PMT1005,O1005,2025-11-05 08:45:00,card,25.00,pending
+PMT1006,O1006,2025-11-06 19:50:00,card,129.99,confirmed
+PMT1007,O1007,2025-11-07 07:25:00,upi,15.75,confirmed
+PMT1008,O1008,2025-11-08 12:15:00,card,220.00,confirmed
+PMT1009,O1009,2025-11-09 13:40:00,card,0.00,refunded
+PMT1010,O1010,2025-11-10 20:10:00,card,75.00,confirmed

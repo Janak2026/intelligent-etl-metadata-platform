@@ -1,5 +1,64 @@
+---
+
+# 📦 **requirements.txt (Full, Databricks-Compatible)**
+
+```txt
+# Core Python
+python-dotenv
+
+# API Layer
 fastapi
+uvicorn[standard]
+
+# Data Validation & Utilities
 pydantic
+typing-extensions
+
+# Unit Testing
 pytest
+
+# Delta Lake + Spark (cluster handles versions)
 delta-spark
 pyspark
+
+# LLM / Embeddings (optional, safe for Databricks)
+openai
+tiktoken
+
+# For future enhancements
+pandas
+numpy
+```
+
+---
+
+# 📘 Notes — Why these versions work
+
+### ✔ `pyspark` & `delta-spark`
+
+You do **not** pin versions — Databricks already installs the correct ones based on cluster runtime.
+
+### ✔ `fastapi` + `uvicorn`
+
+These run perfectly both:
+
+* locally
+* inside Databricks Jobs / external APIs
+
+### ✔ `openai` + `tiktoken`
+
+Used for LLM agent logic and embeddings.
+
+### ✔ `pydantic`
+
+For API models.
+
+### ✔ `pytest`
+
+For tests in `/tests`.
+
+### ✔ No pinned versions
+
+Pinned versions often conflict with Databricks runtime — this is the safest approach.
+
+---
