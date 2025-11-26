@@ -1,0 +1,5 @@
+fastapi
+pydantic
+pytest
+delta-spark
+pyspark
