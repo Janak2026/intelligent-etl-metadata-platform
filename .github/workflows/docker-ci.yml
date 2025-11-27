@@ -8,7 +8,7 @@ on:
 env:
   IMAGE_NAME: intelligent-etl-api
   REGISTRY: ghcr.io
-  USERNAME: Janak2026
+  USERNAME: janak2026
 
 jobs:
 
