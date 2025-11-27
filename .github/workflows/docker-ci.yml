@@ -1,0 +1,51 @@
+name: Build & Push Docker Image (CI/CD)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+env:
+  IMAGE_NAME: intelligent-etl-api
+  REGISTRY: ghcr.io
+  USERNAME: Janak2026
+
+jobs:
+
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        run: |
+          echo "sha_tag=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+          echo "latest_tag=latest" >> $GITHUB_OUTPUT
+
+      - name: Build Docker image
+        run: |
+          docker build -t $REGISTRY/$USERNAME/$IMAGE_NAME:${{ steps.meta.outputs.sha_tag }} .
+          docker tag $REGISTRY/$USERNAME/$IMAGE_NAME:${{ steps.meta.outputs.sha_tag }} $REGISTRY/$USERNAME/$IMAGE_NAME:latest
+
+      - name: Push Docker images
+        run: |
+          docker push $REGISTRY/$USERNAME/$IMAGE_NAME:${{ steps.meta.outputs.sha_tag }}
+          docker push $REGISTRY/$USERNAME/$IMAGE_NAME:latest
+
+      - name: Run Python Tests
+        run: |
+          echo "No tests added yet"
